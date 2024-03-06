@@ -1,5 +1,5 @@
 local settings = Cfg.Data
---local Core = exports[settings.Framework['coreName']]:GetCoreObject()
+local Core = exports[settings.Framework['coreName']]:GetCoreObject()
 
 getMinimapAnchor = function()
     local safezone = GetSafeZoneSize()
