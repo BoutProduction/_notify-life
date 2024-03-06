@@ -1,10 +1,8 @@
+local settings = Cfg.Data
+local Core = exports[settings.Framework['coreName']]:GetCoreObject()
 
 
---local settings = Cfg.Data
---local Core = exports[settings.Framework['coreName']]:GetCoreObject()
---[[
-
--- Funktion zum Auslösen der Nachricht
+-- Function to trigger the notify by type
 function triggerMsg(source, ntype, title, msg, time)
     if ntype == 'notify' then
         TriggerClientEvent('notify', source, type, title, msg, time)
@@ -15,7 +13,7 @@ function triggerMsg(source, ntype, title, msg, time)
     end
 end
 
--- Hinzufügen eines Befehls für Ankündigungen
+-- Announcement Command
 Core.Commands.Add(settings.Announce.cmdName, settings.Locales['announce_Description'], {}, false, function(source, args)
     local player = Core.Functions.GetPlayer(source)
     if player ~= nil and player.PlayerData ~= nil and player.PlayerData.group ~= nil then
@@ -37,4 +35,3 @@ Core.Commands.Add(settings.Announce.cmdName, settings.Locales['announce_Descript
         triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_playerData'], 2.5)
     end
 end)
-]]
