@@ -3,6 +3,10 @@ Cfg = Cfg or {}
 Cfg.Data = {
 
     Framework = {
+        ['type'] = 'QBCore', -- ESX/QBCore
+        -- ESX
+        ['sharedObj'] = 'esx:getSharedObject',
+        -- QBCore
         ['coreName'] = 'qb-core',
         ['triggerName'] = 'QBCore',
     },
@@ -33,6 +37,7 @@ Cfg.Data = {
     },
 
     Notify = {
+        maxDisplayed = 6,
         types = {
             [0] = 'rgb(20, 63, 219)',   -- Default
             [1] = 'rgb(64, 117, 216)',   -- Info
