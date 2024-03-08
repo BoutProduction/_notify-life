@@ -24,7 +24,7 @@ An easy-to-use Notification System with Regular and Broadcast Notifications whic
 
 >**Config**<br>
 >![](https://media.discordapp.net/attachments/725329625919782962/1215596676757196800/code.png?ex=65fd53a0&is=65eadea0&hm=9203c554c3c5096b3f6d47c035cc54b7495b8382df5bad6c4d075d9cdf40b604&=&format=webp&quality=lossless&width=321&height=588)
-
+</blockquote>
 
 > **Links**
 >> Forum Post: **[\*Click me\*](https://forum.cfx.re/t/release-qbcore-notify-lite-an-easy-to-use-notification-system/5216044)**
