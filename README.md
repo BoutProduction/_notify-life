@@ -1,4 +1,4 @@
-<strong>_notify-lite [ v.2.0 ]</strong>
+<strong>_notify-lite [ v.2.1 ]</strong>
 
 <blockquote>
 <b>Description</b><br>
@@ -9,9 +9,11 @@ An easy-to-use Notification System with Regular and Broadcast Notifications whic
 <blockquote>
 <b>Informations</b><br>
 <blockquote>
+‏‏‎ ‎‏‏‎‏‏‎ ‎•  ESX & QBCore Support<br>
 ‏‏‎ ‎‏‏‎‏‏‎ ‎•  Easy-to-Use<br>
-‏‏‎ ‎‏‏‎‏‏‎ ‎•  Create as much types as you want<br>
 ‏‏‎ ‎‏‏‎‏‏‎ ‎•  Notify & Broadcasts<br>
+‏‏‎ ‎‏‏‎‏‏‎ ‎•  Set the max of notifies that can be displayed<br>
+‏‏‎ ‎‏‏‎‏‏‎ ‎•  Create as much types as you want<br>
 </blockquote>
 </blockquote>
 
