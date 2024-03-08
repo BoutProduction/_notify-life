@@ -1,5 +1,4 @@
 local settings = Cfg.Data
-local Core = exports[settings.Framework['coreName']]:GetCoreObject()
 
 getMinimapAnchor = function()
     local safezone = GetSafeZoneSize()
@@ -71,7 +70,7 @@ initNotify = function(type, title, msg, time)
         initNotify(4, settings.Locales['error_Title'], settings.Locales['error_Message'], 2.5)
         return
     else
-        sendMessage("sendNotify", settings.Notify.types[type], title, msg, time, settings.Notify.sound)
+        sendMessage("sendNotify", settings.Notify.maxDisplayed, settings.Notify.types[type], title, msg, time, settings.Notify.sound)
     end
 end
 
