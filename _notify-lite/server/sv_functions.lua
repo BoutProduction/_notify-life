@@ -11,10 +11,9 @@ function triggerMsg(source, ntype, title, msg, time)
     end
 end
 
-if settings.Framework == 'ESX' then
+if settings.Framework['type'] == 'ESX' then
 	TriggerEvent(settings.Framework['sharedObj'], function(obj) Framework = obj end)
-    
-    -- Announcement Command
+
     RegisterCommand(settings.Announce.cmdName, function(source, args, rawCommand)
         local xPlayer = ESX.GetPlayerFromId(source)
         if xPlayer ~= nil and xPlayer.getGroup() ~= nil then
@@ -37,7 +36,7 @@ if settings.Framework == 'ESX' then
         end
     end, false)
 
-elseif Cfg.Framework == "QBCore" then
+elseif settings.Framework['type'] == "QBCore" then
     Framework = exports[settings.Framework['coreName']]:GetCoreObject()
 
     -- Announcement Command
