@@ -1,6 +1,4 @@
 local settings = Cfg.Data
-local Core = exports[settings.Framework['coreName']]:GetCoreObject()
-
 
 -- Function to trigger the notify by type
 function triggerMsg(source, ntype, title, msg, time)
@@ -13,25 +11,55 @@ function triggerMsg(source, ntype, title, msg, time)
     end
 end
 
--- Announcement Command
-Core.Commands.Add(settings.Announce.cmdName, settings.Locales['announce_Description'], {}, false, function(source, args)
-    local player = Core.Functions.GetPlayer(source)
-    if player ~= nil and player.PlayerData ~= nil and player.PlayerData.group ~= nil then
-        local hasPermission = false
-        for _, group in pairs(Cfg.Groups) do
-            if player.PlayerData.group == group then
-                hasPermission = true
-                break
+if settings.Framework == 'ESX' then
+	TriggerEvent(settings.Framework['sharedObj'], function(obj) Framework = obj end)
+    
+    -- Announcement Command
+    RegisterCommand(settings.Announce.cmdName, function(source, args, rawCommand)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        if xPlayer ~= nil and xPlayer.getGroup() ~= nil then
+            local hasPermission = false
+            for k, v in pairs(Config.Groups) do
+                if xPlayer.getGroup() == v then
+                    hasPermission = true
+                    break
+                end
             end
-        end
-        if hasPermission then
-            local msg = table.concat(args, ' ')
-            if msg == '' then return end
-            triggerMsg(-1, 'announce', settings.Announce.type, settings.Locales['announce_Title'], msg, settings.Announce.time)
+            if hasPermission then
+                local msg = table.concat(args, ' ')
+                if msg == '' then return end
+                triggerMsg(-1, 'announce', settings.Announce.type, settings.Locales['announce_Title'], msg, settings.Announce.time)
+            else
+                triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_noPerms'], 2.5)
+            end
         else
-            triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_noPerms'], 2.5)
+            triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_playerData'], 2.5)
         end
-    else
-        triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_playerData'], 2.5)
-    end
-end)
+    end, false)
+
+elseif Cfg.Framework == "QBCore" then
+    Framework = exports[settings.Framework['coreName']]:GetCoreObject()
+
+    -- Announcement Command
+    Framework.Commands.Add(settings.Announce.cmdName, settings.Locales['announce_Description'], {}, false, function(source, args)
+        local player = Framework.Functions.GetPlayer(source)
+        if player ~= nil and player.PlayerData ~= nil and player.PlayerData.group ~= nil then
+            local hasPermission = false
+            for _, group in pairs(Cfg.Groups) do
+                if player.PlayerData.group == group then
+                    hasPermission = true
+                    break
+                end
+            end
+            if hasPermission then
+                local msg = table.concat(args, ' ')
+                if msg == '' then return end
+                triggerMsg(-1, 'announce', settings.Announce.type, settings.Locales['announce_Title'], msg, settings.Announce.time)
+            else
+                triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_noPerms'], 2.5)
+            end
+        else
+            triggerMsg(source, 'notify', 4, settings.Locales['announce_errorTitle'], settings.Locales['announce_playerData'], 2.5)
+        end
+    end)
+end
