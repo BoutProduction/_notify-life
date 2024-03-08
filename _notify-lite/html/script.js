@@ -8,7 +8,7 @@ $(function () {
 
     switch (action) {
       case "sendNotify":
-        Notify.trigger(title, msg, time, type);
+        Notify.trigger(max, title, msg, time, type);
         break;
       case "sendAnnounce":
         Announce.trigger(title, msg, time, type);
@@ -96,8 +96,8 @@ const Announce = {
 const Notify = {
   notifications: [],
 
-  trigger(title, message, duration, type) {
-    this.removeExcessNotifications();
+  trigger(max, title, message, duration, type) {
+    this.removeExcessNotifications(max);
 
     const id = `notification-${Math.random().toString(36).slice(2)}`;
     const el = this.createNotificationElement(id, title, message, type);
@@ -113,8 +113,8 @@ const Notify = {
     this.notifications.push(el);
   },
 
-  removeExcessNotifications() {
-    if (this.notifications.length >= 6) {
+  removeExcessNotifications(max) {
+    if (this.notifications.length >= max) {
       const removedNotification = this.notifications.shift();
       this.removeNotification(removedNotification);
     }
