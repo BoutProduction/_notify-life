@@ -1,4 +1,4 @@
->![]([https://media.discordapp.net/attachments/725329625919782962/1215371327796547594/Screenshot_2024-03-05_203640.png?ex=65fc81c1&is=65ea0cc1&hm=a1d3bca8c5e47b1ed612f107b2482df1ecf75aa7df2ef7bde84a4b15a51531ea&=&format=webp&quality=lossless&width=1046&height=588](https://media.discordapp.net/attachments/725329625919782962/1216023456077058201/bffcd59bd8940990d9636a3571350dfd5d0f3909_4.png?ex=65fee118&is=65ec6c18&hm=5d7ee70fde3a4b374263f8d1d79404ee5afb3d183fd7b94ee7a66132308752ae&=&format=webp&quality=lossless&width=1440&height=377))
+>![](https://media.discordapp.net/attachments/725329625919782962/1216023456077058201/bffcd59bd8940990d9636a3571350dfd5d0f3909_4.png?ex=65fee118&is=65ec6c18&hm=5d7ee70fde3a4b374263f8d1d79404ee5afb3d183fd7b94ee7a66132308752ae&=&format=webp&quality=lossless&width=1440&height=377)
 <strong>_notify-lite [ v.2.1 ]</strong>
 
 <blockquote>
