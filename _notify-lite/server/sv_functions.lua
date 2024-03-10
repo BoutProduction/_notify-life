@@ -18,7 +18,7 @@ if settings.Framework['type'] == 'ESX' then
         local xPlayer = ESX.GetPlayerFromId(source)
         if xPlayer ~= nil and xPlayer.getGroup() ~= nil then
             local hasPermission = false
-            for k, v in pairs(Config.Groups) do
+            for k, v in pairs(settings.Announce.hasPerms) do
                 if xPlayer.getGroup() == v then
                     hasPermission = true
                     break
@@ -44,7 +44,7 @@ elseif settings.Framework['type'] == "QBCore" then
         local player = Framework.Functions.GetPlayer(source)
         if player ~= nil and player.PlayerData ~= nil and player.PlayerData.group ~= nil then
             local hasPermission = false
-            for _, group in pairs(Cfg.Groups) do
+            for _, group in pairs(settings.Announce.hasPerms) do
                 if player.PlayerData.group == group then
                     hasPermission = true
                     break
