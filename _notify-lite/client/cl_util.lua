@@ -25,28 +25,24 @@ end
 containsString = function(str)
     for _, v in ipairs(settings.forbiddenStrings) do
         if string.find(str, v) then
+            PlaySoundFrontend(-1, 'ERROR', 'HUD_AMMO_SHOP_SOUNDSET', 0, 0, 1)
+            initNotify(4, settings.Locales['error_Title'], settings.Locales['error_Message'], 2.5)
             return true
         end
     end
-    PlaySoundFrontend(-1, 'ERROR', 'HUD_AMMO_SHOP_SOUNDSET', 0, 0, 1)
-    initNotify(4, settings.Locales['error_Title'], settings.Locales['error_Message'], 2.5)
     return false
 end
 
-playSound = function(sound)
-    PlaySoundFrontend(-1, sound['dictName'], sound['soundName'], 0, 0, 1)
-end
 
-sendMessage = function(action, max, type, title, msg, time, sound)
+sendMessage = function(action, type, title, msg, time, dict, soundName)
     SendNUIMessage({
-        max = max,
         action = action,
          type = type,
          title = title,
          msg = msg,
-         time = time * 1000
+         time = time
       })
-    playSound(sound)
+      PlaySoundFrontend(-1, dict, soundName, 0, 0, 1)
 end
 
 
@@ -68,17 +64,18 @@ CreateThread(function()
 end)
 
 initNotify = function(type, title, msg, time)
-    if containsString(msg) then
+   if containsString(title) or containsString(msg) then
         return
-    else
-        sendMessage("sendNotify", settings.Notify.maxDisplayed, settings.Notify.types[type], title, msg, time, settings.Notify.sound)
-    end
+   else
+        sendMessage("sendNotify", settings.Notify.types[type], title, msg, time, settings.Notify.sound['dictName'], settings.Notify.sound['soundName'])
+   end
 end
 
 initAnnounce = function(type, title, msg, time)
-    if containsString(msg) then
+    if containsString(title) or containsString(msg) then
         return
     else
-        sendMessage("sendAnnounce", nil, settings.Announce.types[type], title, msg, time, settings.Announce.sound)
+        sendMessage("sendAnnounce", settings.Announce.types[type], title, msg, time, settings.Announce.sound['dictName'], settings.Announce.sound['soundName'])
     end
 end
+
